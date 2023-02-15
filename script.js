@@ -43,27 +43,27 @@ const restaurant = {
   },
 };
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
 
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu);
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu);
 
-// Copy arr
-const mainMenuCopy = [...restaurant.mainMenu];
+// // Copy arr
+// const mainMenuCopy = [...restaurant.mainMenu];
 
 //join Arr
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(menu);
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menu);
 
 // Interables are arrays, strings, maps sets
-const str = 'Benedikt';
-const letters = [...str, '', 'S.'];
-console.log(letters);
+// const str = 'Benedikt';
+// const letters = [...str, '', 'S.'];
+// console.log(letters);
 
 // const ingredients = [
 //   prompt("Let's make pasta! Ingredient 1"),
@@ -75,16 +75,16 @@ console.log(letters);
 // restaurant.orderPasta(...ingredients);
 
 // Objects
-const newRestaurant = {
-  founndingYear: 1998,
-  ...restaurant,
-  founder: 'Benedikt',
-};
-console.log(newRestaurant);
+// const newRestaurant = {
+//   founndingYear: 1998,
+//   ...restaurant,
+//   founder: 'Benedikt',
+// };
+// console.log(newRestaurant);
 
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'Ristaurante Roma';
-console.log(restaurantCopy);
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'Ristaurante Roma';
+// console.log(restaurantCopy);
 
 // restaurant.orderDelivery({
 //   time: '22:30',
@@ -148,3 +148,72 @@ console.log(restaurantCopy);
 // // Default values
 // const [p = 1, q = 1, r = 1] = [8, 9];
 // console.log(p, q, r);
+
+// Use any data typ, return any data type and shor-circuiting
+
+// console.log('---- OR ----');
+
+// console.log(3 || 'Jonas');
+// console.log('' || 'Jonas');
+// console.log(true || 0);
+// console.log(undefined || null);
+
+// console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+// restaurant.numGuests = 23;
+// const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guest1);
+
+// const guest2 = restaurant.numGuests || 10;
+// console.log(guest2);
+
+// console.log('---- AND ----');
+// console.log(0 && 'Jonas');
+// console.log(7 && 'Jonas');
+
+// console.log('Hello' && 23 && null && 'Beneditk');
+
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('mushrooms', 'onions');
+// }
+
+// restaurant.orderPizza && restaurant.orderPizza;
+
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// for (const item of menu) console.log(item);
+
+// for (const item of menu.entries()) {
+//   console.log(item);
+// }
+
+// console.log([...menu.entries()]);
+
+// if (restaurant.openingHours && restaurant.openingHours.mon.open)
+//   console.log(restaurant.openingHours.mon.open);
+
+// console.log(restaurant.openingHours.mon?.open);
+
+// properties names
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days:`;
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+
+console.log(openStr);
+
+// Property values
+const values = Object.values(openingHours);
+console.log(values);
+
+// Entrie Object
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close ${close}`);
+}
