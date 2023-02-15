@@ -194,26 +194,83 @@ const restaurant = {
 
 // console.log(restaurant.openingHours.mon?.open);
 
-// properties names
-const properties = Object.keys(openingHours);
-console.log(properties);
+// // properties names
+// const properties = Object.keys(openingHours);
+// console.log(properties);
 
-let openStr = `We are open on ${properties.length} days:`;
+// let openStr = `We are open on ${properties.length} days:`;
 
-for (const day of properties) {
-  openStr += `${day}, `;
-}
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
 
-console.log(openStr);
+// console.log(openStr);
 
-// Property values
-const values = Object.values(openingHours);
-console.log(values);
+// // Property values
+// const values = Object.values(openingHours);
+// console.log(values);
 
-// Entrie Object
-const entries = Object.entries(openingHours);
-console.log(entries);
+// // Entrie Object
+// const entries = Object.entries(openingHours);
+// console.log(entries);
 
-for (const [key, { open, close }] of entries) {
-  console.log(`On ${key} we open at ${open} and close ${close}`);
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key} we open at ${open} and close ${close}`);
+// }
+
+// Coding Challenge 2
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+for (const [i, player] of game.scored.entries())
+  console.log(`Goal ${i + 1}: ${player}`);
+
+const odds = Object.values(game.odds);
+let average = 0;
+for (const odd of Object.values(game.odds)) average += odd;
+average /= odds.length;
+console.log(average);
+
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
 }
