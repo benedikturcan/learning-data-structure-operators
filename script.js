@@ -1,8 +1,8 @@
 'use strict';
 
 // Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
 const restaurant = {
@@ -472,69 +472,112 @@ const restaurant = {
 // console.log(announcement.replaceAll('door', 'gate'));
 
 // Booleans
-const plane = 'Airbus A320 neo';
-console.log(plane.includes('Boeing'));
-console.log(plane.startsWith('A'));
+// const plane = 'Airbus A320 neo';
+// console.log(plane.includes('Boeing'));
+// console.log(plane.startsWith('A'));
 
-if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
-  console.log('Part of the new airbus family');
+// if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+//   console.log('Part of the new airbus family');
+// }
+
+// // Practices exercise
+// const checkBaggage = function (items) {
+//   const baggage = items.toLowerCase().trim();
+//   if (baggage.includes('knife') || baggage.includes('gun')) {
+//     console.log('You are not allowed to get on board');
+//   } else console.log('Welcome on board');
+// };
+
+// checkBaggage('I have a laptop, some Food and a Pocket knife');
+// checkBaggage('socks and camera');
+// checkBaggage('Snacks and a gUn for protEction');
+
+// console.log('a+very+nice+string'.split('+'));
+// console.log('Benedikt Urcan'.split(' '));
+
+// const [firstName, lastName] = 'Benedikt Urcan'.split(' ');
+// console.log(firstName, lastName);
+
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
+
+// console.log('--- NEW PART ---');
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
+
+//   for (const n of names) {
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//   }
+//   console.log(namesUpper.join(' '));
+// };
+
+// capitalizeName('jessica ann smith davis');
+// capitalizeName('benedikt urcan');
+
+// // padding a string
+// const message = 'go to gate 23';
+// console.log(message.padStart(25, '+').padEnd(35, '+'));
+
+// const maskCreditCard = function (num) {
+//   const str = num + '';
+//   const last = str.slice(-4);
+//   return last.padStart(str.length, '*');
+// };
+
+// console.log(maskCreditCard(2349829348234));
+// console.log(maskCreditCard('134923f40213'));
+
+// // Repeat
+// const msg2 = 'Bad weather, all departures are delayed. ';
+// console.log(msg2.repeat(5));
+
+// const planesInLine = function (n) {
+//   console.log(`There are ${n} planes in the line`);
+// };
+// planesInLine(7);
+// planesInLine(19);
+// planesInLine(23);
+
+// Coding challenge 4
+
+// document.body.append(document.createElement('textarea'));
+// document.body.append(document.createElement('button'));
+
+// document.querySelector('button').addEventListener('click', function () {
+//   const text = document.querySelector('textarea').value;
+//   const rows = text.split('\n');
+
+//   for (const row of rows) {
+//     const [first, second] = row.toLowerCase().trim().split('_');
+//     const output = `${first}${second.replace(
+//       second[0],
+//       second[0].toUpperCase()
+//     )}`;
+//     console.log(`${output.padEnd(20)}`);
+//   }
+// });
+
+// underscore_case;
+// first_name;
+// Some_Variable;
+// calculate_AGE;
+// delayed_departure;
+
+// Data needed for a later exercise
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? '!!' : ''} ${type.replaceAll(
+    '_',
+    ' '
+  )} from ${getCode(from)} to ${getCode(to)} (${time.replace(
+    ':',
+    'h'
+  )})`.padStart(50);
+  console.log(output);
 }
-
-// Practices exercise
-const checkBaggage = function (items) {
-  const baggage = items.toLowerCase().trim();
-  if (baggage.includes('knife') || baggage.includes('gun')) {
-    console.log('You are not allowed to get on board');
-  } else console.log('Welcome on board');
-};
-
-checkBaggage('I have a laptop, some Food and a Pocket knife');
-checkBaggage('socks and camera');
-checkBaggage('Snacks and a gUn for protEction');
-
-console.log('a+very+nice+string'.split('+'));
-console.log('Benedikt Urcan'.split(' '));
-
-const [firstName, lastName] = 'Benedikt Urcan'.split(' ');
-console.log(firstName, lastName);
-
-const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
-
-console.log('--- NEW PART ---');
-const capitalizeName = function (name) {
-  const names = name.split(' ');
-  const namesUpper = [];
-
-  for (const n of names) {
-    namesUpper.push(n[0].toUpperCase() + n.slice(1));
-  }
-  console.log(namesUpper.join(' '));
-};
-
-capitalizeName('jessica ann smith davis');
-capitalizeName('benedikt urcan');
-
-// padding a string
-const message = 'go to gate 23';
-console.log(message.padStart(25, '+').padEnd(35, '+'));
-
-const maskCreditCard = function (num) {
-  const str = num + '';
-  const last = str.slice(-4);
-  return last.padStart(str.length, '*');
-};
-
-console.log(maskCreditCard(2349829348234));
-console.log(maskCreditCard('134923f40213'));
-
-// Repeat
-const msg2 = 'Bad weather, all departures are delayed. ';
-console.log(msg2.repeat(5));
-
-const planesInLine = function (n) {
-  console.log(`There are ${n} planes in the line`);
-};
-planesInLine(7);
-planesInLine(19);
-planesInLine(23);
