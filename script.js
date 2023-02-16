@@ -275,66 +275,131 @@ const restaurant = {
 //   console.log(`Odd of ${teamStr} ${odd}`);
 // }
 
-const ordersSet = new Set([
-  'Pasta',
-  'Pizza',
-  'Pizza',
-  'Risotto',
-  'Pasta',
-  'Pizza',
+// const ordersSet = new Set([
+//   'Pasta',
+//   'Pizza',
+//   'Pizza',
+//   'Risotto',
+//   'Pasta',
+//   'Pizza',
+// ]);
+
+// console.log(ordersSet);
+
+// console.log(new Set('Benedikt'));
+
+// console.log(ordersSet.size);
+// console.log(ordersSet.has('Pizza'));
+// console.log(ordersSet.has('Coke'));
+// ordersSet.add('Garlic Bread');
+// ordersSet.add('Garlic Bread');
+
+// ordersSet.delete('Risotto');
+// console.log(ordersSet);
+
+// for (const order of ordersSet) console.log(order);
+
+// // Example
+// const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+// console.log(
+//   new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+// );
+
+// console.log(new Set('Benedikt').size);
+
+// const rest = new Map();
+// rest.set('Name', 'Classico Italiano');
+// rest.set(1, 'Rome, Italy');
+// rest.set(2, 'Lisbon, Portugal');
+
+// rest
+//   .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//   .set('open', 11)
+//   .set('close', 23)
+//   .set(true, 'We are open')
+//   .set(false, 'We are close');
+
+// console.log(rest.get('Name'));
+// console.log(rest.get(true));
+
+// console.log('--- If open or not ---');
+// const time = 21;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+// console.log(rest.has('categories'));
+// rest.delete(2);
+// console.log(rest);
+// console.log(rest.size);
+
+// rest.set([1, 2], 'Test');
+// console.log(rest);
+// console.log(rest.size);
+
+// console.log(rest.get([1, 2]));
+
+// console.log('---- MAPS ITERATION ----');
+
+// const question = new Map([
+//   ['question', 'what is the best programming language in the world?'],
+//   [1, 'C'],
+//   [(2, 'Java')],
+//   [(3, 'JavaScript')],
+//   ['correct', 3],
+//   [true, 'Correct answer'],
+//   [false, 'Try again'],
+// ]);
+// console.log(question);
+
+// //Quizz app
+// console.log(question.get('question'));
+
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
+
+// // const answer = Number(prompt('Your answer'));
+// console.log(answer);
+
+// console.log(question.get(question.get('correct') === answer));
+
+// //convert map to array
+// console.log([...question]);
+// console.log(question.entries());
+// console.log(...[question.keys()]);
+// console.log(question.values());
+
+// Coding challenge No. 3
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
 ]);
 
-console.log(ordersSet);
+const events = [...new Set(gameEvents.values())];
+console.log(events);
 
-console.log(new Set('Benedikt'));
+gameEvents.delete(64);
 
-console.log(ordersSet.size);
-console.log(ordersSet.has('Pizza'));
-console.log(ordersSet.has('Coke'));
-ordersSet.add('Garlic Bread');
-ordersSet.add('Garlic Bread');
-
-ordersSet.delete('Risotto');
-console.log(ordersSet);
-
-for (const order of ordersSet) console.log(order);
-
-// Example
-const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
-const staffUnique = [...new Set(staff)];
-console.log(staffUnique);
 console.log(
-  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`
+);
+const time = [...gameEvents.keys()].pop();
+console.log(time);
+console.log(
+  `An event happened, on average, every ${time / gameEvents.size} minutes`
 );
 
-console.log(new Set('Benedikt').size);
-
-const rest = new Map();
-rest.set('Name', 'Classico Italiano');
-rest.set(1, 'Rome, Italy');
-rest.set(2, 'Lisbon, Portugal');
-
-rest
-  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-  .set('open', 11)
-  .set('close', 23)
-  .set(true, 'We are open')
-  .set(false, 'We are close');
-
-console.log(rest.get('Name'));
-console.log(rest.get(true));
-
-console.log('--- If open or not ---');
-const time = 21;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
-
-console.log(rest.has('categories'));
-rest.delete(2);
-console.log(rest);
-console.log(rest.size);
-
-rest.set([1, 2], 'Test');
-console.log(rest);
-console.log(rest.size);
-
-console.log(rest.get([1, 2]));
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'First' : 'Second';
+  console.log(`[ ${half} HALF ] ${min}: ${event}`);
+}
